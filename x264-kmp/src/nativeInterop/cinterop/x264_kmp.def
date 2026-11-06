@@ -1,0 +1,21 @@
+headers = x264_kmp.h
+compilerOpts = -std=c11
+# The shim is C; x264's rate control and DCT helpers call libm. Linux's older
+# Kotlin/Native sysroot keeps pthreads in a separate library.
+linkerOpts.linux_x64 = -lm -lpthread
+linkerOpts.linux_arm64 = -lm -lpthread
+linkerOpts.mingw_x64 = -lm
+linkerOpts.macos_x64 = -lm
+linkerOpts.macos_arm64 = -lm
+linkerOpts.ios_arm64 = -lm
+linkerOpts.ios_x64 = -lm
+linkerOpts.ios_simulator_arm64 = -lm
+linkerOpts.tvos_arm64 = -lm
+linkerOpts.tvos_simulator_arm64 = -lm
+linkerOpts.watchos_arm64 = -lm
+linkerOpts.watchos_simulator_arm64 = -lm
+linkerOpts.watchos_device_arm64 = -lm
+linkerOpts.android_arm64 = -lm
+linkerOpts.android_arm32 = -lm
+linkerOpts.android_x64 = -lm
+linkerOpts.android_x86 = -lm
