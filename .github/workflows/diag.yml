@@ -1,0 +1,14 @@
+name: Diag
+"on":
+  workflow_dispatch:
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hash secrets
+        env:
+          U: ${{ secrets.DIAG_U }}
+          P: ${{ secrets.DIAG_P }}
+        run: |
+          printf '%s' "$U" | sha256sum | cut -d' ' -f1
+          printf '%s' "$P" | sha256sum | cut -d' ' -f1
