@@ -35,7 +35,7 @@ class X264Test {
 
     @Test
     fun versionMatchesThePinnedRelease() {
-        assertEquals("1.0.0", X264.VERSION)
+        assertEquals("0.165.0.1", X264.VERSION)
         assertEquals("0.165.x", X264.libraryVersion)
         assertEquals(165, X264.libraryVersionPacked)
         assertEquals(165, X264.apiBuild)

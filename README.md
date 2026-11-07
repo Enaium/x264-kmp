@@ -11,7 +11,7 @@ format. x264's assembly kernels are disabled: the portable C implementation
 runs everywhere, which keeps a single code path across x86, ARM, Android, MinGW
 and WebAssembly.
 
-Binding version: **1.0.0** (x264 API build 165, `X264_POINTVER` `0.165.x`).
+Binding version: **0.165.0.1** (x264 API build 165, `X264_POINTVER` `0.165.x`).
 
 ## Supported targets
 
@@ -43,7 +43,7 @@ This build is 8-bit only (`X264_BIT_DEPTH 8`). 10-bit input is not accepted.
 
 ```kotlin
 dependencies {
-    implementation("cn.enaium.x264:x264-kmp:1.0.0")
+    implementation("cn.enaium.x264:x264-kmp:0.165.0.1")
 }
 ```
 

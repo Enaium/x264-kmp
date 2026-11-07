@@ -25,7 +25,7 @@ package cn.enaium.x264
 /** Version information of the bundled x264 build and of this binding. */
 object X264 {
     /** Version of the Kotlin bindings, independent of the x264 API build. */
-    const val VERSION: String = "1.0.0"
+    const val VERSION: String = "0.165.0.1"
 
     /** The upstream x264 point version this binding ships, e.g. `"0.165.x"`. */
     val libraryVersion: String by lazy { X264Native.versionString() }
