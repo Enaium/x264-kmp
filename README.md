@@ -37,6 +37,22 @@ required at runtime. Emscripten has no pthreads, so that build sets
 also clears sliced threads and the lookahead pool. Every other target uses
 x264's normal thread pool.
 
+The standalone module, the JS glue and the licence are also published as the
+`@enaium/x264-kmp` npm package (`:x264-kmp:assembleWasmNpm` stages it in
+`build/npm`, `:x264-kmp:publishWasmNpm` publishes it). npm only accepts
+three-component semver, so `0.165.0.1` is published as `0.165.0-1` under
+the `latest` tag. Plain JavaScript apps instantiate it without Kotlin:
+
+```js
+import { initX264Kmp } from "@enaium/x264-kmp";
+
+const module = await initX264Kmp();
+console.log(module.versionString());
+```
+
+The npm token is read from `npm.publish.key` in `~/.gradle/gradle.properties`
+(or `-Pnpm.publish.key=<token>`); CI reads the `NPM_PUBLISH_KEY` secret.
+
 This build is 8-bit only (`X264_BIT_DEPTH 8`). 10-bit input is not accepted.
 
 ## Using the library
