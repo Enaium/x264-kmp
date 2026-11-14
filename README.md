@@ -137,10 +137,14 @@ AVFoundation/V4L2/Media Foundation on the desktops and `getUserMedia` in the
 browser, so the same code runs on every target instead of an Android-only
 camera implementation.
 
-The pipeline is camera-kmp I420 -> x264 `ultrafast` + `zerolatency`
-encode. The UI shows the camera picture plus the encoded frame, byte and
-bitrate counters (encode-only). A deterministic test pattern takes over when
-no camera is available (CI, denied permission).
+The pipeline is camera-kmp I420 -> x264 `ultrafast` + `zerolatency` encode.
+Decoding uses the platform API where one exists: MediaCodec on Android (JVM
+and native) and WebCodecs in the browser; the desktop targets fall back to
+OpenH264 (`cn.enaium.openh264:openh264-kmp`). The UI shows the camera picture
+next to the decoded round trip with frame, byte and bitrate counters. A
+deterministic test pattern is used only until the camera delivers its first
+frame (or when no camera exists), so the preview never alternates between the
+test pattern and the camera.
 
 `examples/common` is also the wasmJs browser host: its Emscripten runtimes
 (sdl-kmp, imgui-kmp and camera-kmp) are installed as npm packages and served
