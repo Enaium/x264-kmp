@@ -11,7 +11,7 @@ format. x264's assembly kernels are disabled: the portable C implementation
 runs everywhere, which keeps a single code path across x86, ARM, Android, MinGW
 and WebAssembly.
 
-Binding version: **0.165.0.1** (x264 API build 165, `X264_POINTVER` `0.165.x`).
+Binding version: **1.0.1-fixed.0.165.0** (x264 API build 165, `X264_POINTVER` `0.165.x`).
 
 ## Supported targets
 
@@ -39,9 +39,9 @@ x264's normal thread pool.
 
 The standalone module, the JS glue and the licence are also published as the
 `@enaium/x264-kmp` npm package (`:x264-kmp:assembleWasmNpm` stages it in
-`build/npm`, `:x264-kmp:publishWasmNpm` publishes it). npm only accepts
-three-component semver, so `0.165.0.1` is published as `0.165.0-1` under
-the `latest` tag. Plain JavaScript apps instantiate it without Kotlin:
+`build/npm`, `:x264-kmp:publishWasmNpm` publishes it). The fixed version is
+already valid npm semver, so it is published verbatim under the `latest` tag.
+Plain JavaScript apps instantiate it without Kotlin:
 
 ```js
 import { initX264Kmp } from "@enaium/x264-kmp";
@@ -59,7 +59,7 @@ This build is 8-bit only (`X264_BIT_DEPTH 8`). 10-bit input is not accepted.
 
 ```kotlin
 dependencies {
-    implementation("cn.enaium.x264:x264-kmp:0.165.0.1")
+    implementation("cn.enaium.x264:x264-kmp:1.0.1-fixed.0.165.0")
 }
 ```
 
